@@ -1,0 +1,2 @@
+NET "clock" LOC = P55;
+NET "txd" LOC = P63;
