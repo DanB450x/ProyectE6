@@ -1,0 +1,5 @@
+vhdl work "G:\Users\UART\TX.vhd"
+vhdl work "G:\Users\UART\RX.vhd"
+vhdl work "G:\Users\UART\mux.vhd"
+vhdl work "G:\Users\UART\hex2led.vhd"
+vhdl work "G:\Users\UART\UART.vhd"

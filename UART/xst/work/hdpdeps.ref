@@ -1,0 +1,27 @@
+V3 19
+FL G:/Users/UART/hex2led.vhd 2018/05/06.22:29:18 P.20131013
+EN work/hex2led 1525634983 FL G:/Users/UART/hex2led.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/hex2led/Behavioral 1525634984 \
+      FL G:/Users/UART/hex2led.vhd EN work/hex2led 1525634983
+FL G:/Users/UART/mux.vhd 2018/05/06.22:29:34 P.20131013
+EN work/Mux2 1525634981 FL G:/Users/UART/mux.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/NUMERIC_STD 1381692181
+AR work/Mux2/Behavioral 1525634982 \
+      FL G:/Users/UART/mux.vhd EN work/Mux2 1525634981
+FL G:/Users/UART/RX.vhd 2018/05/06.22:28:50 P.20131013
+EN work/RX 1525634979 FL G:/Users/UART/RX.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/NUMERIC_STD 1381692181
+AR work/RX/rec 1525634980 \
+      FL G:/Users/UART/RX.vhd EN work/RX 1525634979
+FL G:/Users/UART/TX.vhd 2018/05/06.22:29:34 P.20131013
+EN work/TX 1525634977 FL G:/Users/UART/TX.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/NUMERIC_STD 1381692181
+AR work/TX/xmit 1525634978 \
+      FL G:/Users/UART/TX.vhd EN work/TX 1525634977
+FL G:/Users/UART/UART.vhd 2018/05/06.22:13:43 P.20131013
+EN work/UART 1525634985 FL G:/Users/UART/UART.vhd PB ieee/std_logic_1164 1381692176 \
+      PB ieee/NUMERIC_STD 1381692181
+AR work/UART/com 1525634986 \
+      FL G:/Users/UART/UART.vhd EN work/UART 1525634985 CP TX CP RX CP Mux2 \
+      CP hex2led

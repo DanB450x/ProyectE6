@@ -1,0 +1,10 @@
+AR hex2led behavioral G:/Users/UART/hex2led.vhd sub00/vhpl05 1525634984
+EN mux2 NULL G:/Users/UART/mux.vhd sub00/vhpl08 1525634981
+EN hex2led NULL G:/Users/UART/hex2led.vhd sub00/vhpl04 1525634983
+AR mux2 behavioral G:/Users/UART/mux.vhd sub00/vhpl09 1525634982
+AR tx xmit G:/Users/UART/TX.vhd sub00/vhpl01 1525634978
+AR rx rec G:/Users/UART/RX.vhd sub00/vhpl03 1525634980
+AR uart com G:/Users/UART/UART.vhd sub00/vhpl07 1525634986
+EN rx NULL G:/Users/UART/RX.vhd sub00/vhpl02 1525634979
+EN tx NULL G:/Users/UART/TX.vhd sub00/vhpl00 1525634977
+EN uart NULL G:/Users/UART/UART.vhd sub00/vhpl06 1525634985

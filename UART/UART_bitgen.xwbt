@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=G:\Users\UART\UART.ncd
+OUTFILE=G:\Users\UART\UART.bit
+FAMILY=Spartan3A and Spartan3AN
+PART=xc3s50an-5tqg144
+WORKINGDIR=G:\Users\UART
+LICENSE=WebPack
+USER_INFO=__0_0_0

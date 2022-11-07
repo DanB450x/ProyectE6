@@ -1,0 +1,543 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.16 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.16 secs
+ 
+--> Reading design: UART.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "UART.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "UART"
+Output Format                      : NGC
+Target Device                      : xc3s50an-5-tqg144
+
+---- Source Options
+Top Module Name                    : UART
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "G:/Users/UART/TX.vhd" in Library work.
+Entity <tx> compiled.
+Entity <tx> (Architecture <xmit>) compiled.
+Compiling vhdl file "G:/Users/UART/RX.vhd" in Library work.
+Entity <rx> compiled.
+Entity <rx> (Architecture <rec>) compiled.
+Compiling vhdl file "G:/Users/UART/mux.vhd" in Library work.
+Entity <mux2> compiled.
+Entity <mux2> (Architecture <behavioral>) compiled.
+Compiling vhdl file "G:/Users/UART/hex2led.vhd" in Library work.
+Entity <hex2led> compiled.
+Entity <hex2led> (Architecture <behavioral>) compiled.
+Compiling vhdl file "G:/Users/UART/UART.vhd" in Library work.
+Entity <uart> compiled.
+Entity <uart> (Architecture <com>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <UART> in library <work> (architecture <com>).
+
+Analyzing hierarchy for entity <TX> in library <work> (architecture <xmit>).
+
+Analyzing hierarchy for entity <RX> in library <work> (architecture <rec>).
+
+Analyzing hierarchy for entity <Mux2> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <hex2led> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <UART> in library <work> (Architecture <com>).
+Entity <UART> analyzed. Unit <UART> generated.
+
+Analyzing Entity <TX> in library <work> (Architecture <xmit>).
+INFO:Xst:2679 - Register <datafll<0>> in unit <TX> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <datafll<9>> in unit <TX> has a constant value of 1 during circuit operation. The register is replaced by logic.
+Entity <TX> analyzed. Unit <TX> generated.
+
+Analyzing Entity <RX> in library <work> (Architecture <rec>).
+Entity <RX> analyzed. Unit <RX> generated.
+
+Analyzing Entity <Mux2> in library <work> (Architecture <behavioral>).
+Entity <Mux2> analyzed. Unit <Mux2> generated.
+
+Analyzing Entity <hex2led> in library <work> (Architecture <behavioral>).
+Entity <hex2led> analyzed. Unit <hex2led> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <TX>.
+    Related source file is "G:/Users/UART/TX.vhd".
+    Found 1-bit register for signal <tx_line>.
+    Found 1-bit register for signal <busy>.
+    Found 4-bit comparator less for signal <busy$cmp_lt0000> created at line 43.
+    Found 8-bit register for signal <datafll<8:1>>.
+    Found 4-bit up counter for signal <index>.
+    Found 11-bit up counter for signal <prscl>.
+    Found 11-bit comparator less for signal <prscl$cmp_lt0000> created at line 35.
+    Found 1-bit register for signal <tx_flg>.
+    Found 1-bit 10-to-1 multiplexer for signal <tx_line$mux0000> created at line 42.
+    Summary:
+	inferred   2 Counter(s).
+	inferred  11 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <TX> synthesized.
+
+
+Synthesizing Unit <RX>.
+    Related source file is "G:/Users/UART/RX.vhd".
+    Found 1-bit register for signal <busy>.
+    Found 8-bit register for signal <data>.
+    Found 4-bit comparator less for signal <busy$cmp_lt0000> created at line 41.
+    Found 10-bit register for signal <datafll>.
+    Found 4-bit register for signal <index>.
+    Found 4-bit adder for signal <index$addsub0000> created at line 42.
+    Found 4-bit comparator greatequal for signal <index$cmp_ge0000> created at line 41.
+    Found 11-bit register for signal <prscl>.
+    Found 11-bit adder for signal <prscl$addsub0000> created at line 35.
+    Found 11-bit comparator less for signal <prscl$cmp_lt0000> created at line 34.
+    Found 1-bit register for signal <rx_flg>.
+    Summary:
+	inferred  35 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred   3 Comparator(s).
+Unit <RX> synthesized.
+
+
+Synthesizing Unit <Mux2>.
+    Related source file is "G:/Users/UART/mux.vhd".
+Unit <Mux2> synthesized.
+
+
+Synthesizing Unit <hex2led>.
+    Related source file is "G:/Users/UART/hex2led.vhd".
+    Found 16x7-bit ROM for signal <segment>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <hex2led> synthesized.
+
+
+Synthesizing Unit <UART>.
+    Related source file is "G:/Users/UART/UART.vhd".
+    Found 8-bit register for signal <RX_BIN>.
+    Found 8-bit register for signal <tx_data>.
+    Found 1-bit register for signal <tx_start>.
+    Summary:
+	inferred  17 D-type flip-flop(s).
+Unit <UART> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x7-bit ROM                                          : 1
+# Adders/Subtractors                                   : 2
+ 11-bit adder                                          : 1
+ 4-bit adder                                           : 1
+# Counters                                             : 2
+ 11-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 29
+ 1-bit register                                        : 24
+ 11-bit register                                       : 1
+ 4-bit register                                        : 1
+ 8-bit register                                        : 3
+# Comparators                                          : 5
+ 11-bit comparator less                                : 2
+ 4-bit comparator greatequal                           : 1
+ 4-bit comparator less                                 : 2
+# Multiplexers                                         : 1
+ 1-bit 10-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <tx_flg> in Unit <c1> is equivalent to the following FF/Latch, which will be removed : <busy> 
+INFO:Xst:2261 - The FF/Latch <rx_flg> in Unit <c2> is equivalent to the following FF/Latch, which will be removed : <busy> 
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x7-bit ROM                                          : 1
+# Adders/Subtractors                                   : 2
+ 11-bit adder                                          : 1
+ 4-bit adder                                           : 1
+# Counters                                             : 2
+ 11-bit up counter                                     : 1
+ 4-bit up counter                                      : 1
+# Registers                                            : 63
+ Flip-Flops                                            : 63
+# Comparators                                          : 5
+ 11-bit comparator less                                : 2
+ 4-bit comparator greatequal                           : 1
+ 4-bit comparator less                                 : 2
+# Multiplexers                                         : 1
+ 1-bit 10-to-1 multiplexer                             : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <tx_flg> in Unit <TX> is equivalent to the following FF/Latch, which will be removed : <busy> 
+INFO:Xst:2261 - The FF/Latch <rx_flg> in Unit <RX> is equivalent to the following FF/Latch, which will be removed : <busy> 
+
+Optimizing unit <UART> ...
+
+Optimizing unit <TX> ...
+
+Optimizing unit <RX> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block UART, actual ratio is 9.
+FlipFlop RX_BIN_7 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_6 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_5 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_4 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_3 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_2 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_1 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop RX_BIN_0 has been replicated 1 time(s) to handle iob=true attribute.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 84
+ Flip-Flops                                            : 84
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : UART.ngr
+Top Level Output File Name         : UART
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 30
+
+Cell Usage :
+# BELS                             : 169
+#      GND                         : 1
+#      INV                         : 5
+#      LUT1                        : 24
+#      LUT2                        : 12
+#      LUT2_L                      : 1
+#      LUT3                        : 41
+#      LUT3_D                      : 1
+#      LUT4                        : 26
+#      LUT4_L                      : 2
+#      MUXCY                       : 30
+#      MUXF5                       : 2
+#      MUXF6                       : 1
+#      VCC                         : 1
+#      XORCY                       : 22
+# FlipFlops/Latches                : 84
+#      FD_1                        : 16
+#      FDE                         : 52
+#      FDR                         : 1
+#      FDRE                        : 15
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 29
+#      IBUF                        : 11
+#      OBUF                        : 18
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s50antqg144-5 
+
+ Number of Slices:                       65  out of    704     9%  
+ Number of Slice Flip Flops:             76  out of   1408     5%  
+ Number of 4 input LUTs:                112  out of   1408     7%  
+ Number of IOs:                          30
+ Number of bonded IOBs:                  30  out of    108    27%  
+    IOB Flip Flops:                       8
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clock_12                           | BUFGP                  | 68    |
+c2/rx_flg                          | NONE(RX_BIN_0)         | 16    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 5.673ns (Maximum Frequency: 176.258MHz)
+   Minimum input arrival time before clock: 3.278ns
+   Maximum output required time after clock: 7.504ns
+   Maximum combinational path delay: 8.016ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clock_12'
+  Clock period: 5.673ns (frequency: 176.258MHz)
+  Total number of paths / destination ports: 928 / 132
+-------------------------------------------------------------------------
+Delay:               5.673ns (Levels of Logic = 4)
+  Source:            c1/tx_flg (FF)
+  Destination:       c1/tx_flg (FF)
+  Source Clock:      clock_12 rising
+  Destination Clock: clock_12 rising
+
+  Data Path: c1/tx_flg to c1/tx_flg
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             18   0.495   0.910  c1/tx_flg (c1/tx_flg)
+     LUT4:I3->O            1   0.561   0.380  c1/index_and0000110 (c1/index_and0000110)
+     LUT3:I2->O            6   0.561   0.571  c1/index_and0000138 (c1/index_not0001)
+     LUT4:I3->O            5   0.561   0.561  c1/index_and0000 (c1/index_and0000)
+     LUT3:I2->O            1   0.561   0.357  c1/busy_not00011 (c1/busy_not0001)
+     FDE:CE                    0.156          c1/tx_flg
+    ----------------------------------------
+    Total                      5.673ns (2.895ns logic, 2.779ns route)
+                                       (51.0% logic, 49.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clock_12'
+  Total number of paths / destination ports: 43 / 43
+-------------------------------------------------------------------------
+Offset:              3.278ns (Levels of Logic = 2)
+  Source:            uart_rxd (PAD)
+  Destination:       c2/prscl_10 (FF)
+  Destination Clock: clock_12 rising
+
+  Data Path: uart_rxd to c2/prscl_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            13   0.824   0.944  uart_rxd_IBUF (uart_rxd_IBUF)
+     LUT2:I0->O           11   0.561   0.793  c2/prscl_not00021 (c2/prscl_not0002)
+     FDE:CE                    0.156          c2/prscl_0
+    ----------------------------------------
+    Total                      3.278ns (1.541ns logic, 1.737ns route)
+                                       (47.0% logic, 53.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clock_12'
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Offset:              5.248ns (Levels of Logic = 1)
+  Source:            c1/tx_line (FF)
+  Destination:       uart_txd (PAD)
+  Source Clock:      clock_12 rising
+
+  Data Path: c1/tx_line to uart_txd
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.495   0.357  c1/tx_line (c1/tx_line)
+     OBUF:I->O                 4.396          uart_txd_OBUF (uart_txd)
+    ----------------------------------------
+    Total                      5.248ns (4.891ns logic, 0.357ns route)
+                                       (93.2% logic, 6.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'c2/rx_flg'
+  Total number of paths / destination ports: 64 / 15
+-------------------------------------------------------------------------
+Offset:              7.504ns (Levels of Logic = 3)
+  Source:            RX_BIN_1 (FF)
+  Destination:       SS_HEX1<1> (PAD)
+  Source Clock:      c2/rx_flg falling
+
+  Data Path: RX_BIN_1 to SS_HEX1<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD_1:C->Q             1   0.495   0.423  RX_BIN_1 (RX_BIN_1)
+     LUT3:I1->O            7   0.562   0.710  Multiplexer/Mux2_Out<1>1 (SS_in<1>)
+     LUT4:I0->O            1   0.561   0.357  SevenSegment1/Mrom_segment21 (SS_HEX1_5_OBUF)
+     OBUF:I->O                 4.396          SS_HEX1_5_OBUF (SS_HEX1<5>)
+    ----------------------------------------
+    Total                      7.504ns (6.014ns logic, 1.490ns route)
+                                       (80.1% logic, 19.9% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 28 / 7
+-------------------------------------------------------------------------
+Delay:               8.016ns (Levels of Logic = 4)
+  Source:            key<1> (PAD)
+  Destination:       SS_HEX1<1> (PAD)
+
+  Data Path: key<1> to SS_HEX1<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             4   0.824   0.607  key_1_IBUF (key_1_IBUF)
+     LUT3:I0->O            7   0.561   0.710  Multiplexer/Mux2_Out<3>1 (SS_in<3>)
+     LUT4:I0->O            1   0.561   0.357  SevenSegment1/Mrom_segment41 (SS_HEX1_3_OBUF)
+     OBUF:I->O                 4.396          SS_HEX1_3_OBUF (SS_HEX1<3>)
+    ----------------------------------------
+    Total                      8.016ns (6.342ns logic, 1.674ns route)
+                                       (79.1% logic, 20.9% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.28 secs
+ 
+--> 
+
+Total memory usage is 356116 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
+

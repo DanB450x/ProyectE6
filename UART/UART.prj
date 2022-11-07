@@ -1,0 +1,5 @@
+vhdl work "TX.vhd"
+vhdl work "RX.vhd"
+vhdl work "mux.vhd"
+vhdl work "hex2led.vhd"
+vhdl work "UART.vhd"
