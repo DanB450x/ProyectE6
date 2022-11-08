@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    12:46:55 05/13/2014 
+-- Create Date:    12:46:55 03/11/2022
 -- Design Name: 
 -- Module Name:    Main - Behavioral 
 -- Project Name: 
@@ -24,19 +24,19 @@ use IEEE.NUMERIC_STD.ALL; -- I have uncommented this one
 --use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity adcdac is
-port( enable      :in std_logic; --switch to start preamp and adc. (L13)
+port( enable      :in std_logic; 
 		LED         :out std_logic_vector(7 downto 0);
 		clk_50      :in std_logic;
-		SPI_MISO    :in std_logic; --from adc to FPGA. Master Input, Slave Output. This is the serial data output of the adc to the FPGA. (N10)
-		AD_CONV     :out std_logic; --from FPGA to adc. It is the triggering the analog-to-digital conversion. (P11, internal)
-		AMP_CS      :out std_logic; --from FPGA to amp. It is an active low chip select signal. The gain is set when it goes high. (N7)
-		SPI_MOSI    :out std_logic; --from FPGA to amp. Master Output, Slave Input. It presents the 8bit programmable gain settings. (T4)
-		SPI_SCK     :inout std_logic; --from FPGA to amp/from FPGA to adc. SPI_MOSI and SPI_MISO send one bit at every rising edge of this clock. (U16)
-		AMP_SHDN    :out std_logic; --from FPGA to amp. It is an active high reset signal. (P7)
-		SPI_SS_B    :out std_logic; --DEACTIVATION
-		SF_CE0      :out std_logic; --DEACTIVATION
-		FPGA_INIT_B :out std_logic; --DEACTIVATION
-		DAC_CS      :out std_logic := '1'); --DEACTIVATION
+		SPI_MISO    :in std_logic; 
+		AD_CONV     :out std_logic; 
+		AMP_CS      :out std_logic; 
+		SPI_MOSI    :out std_logic; 
+		SPI_SCK     :inout std_logic;
+		AMP_SHDN    :out std_logic;
+		SPI_SS_B    :out std_logic; 
+		SF_CE0      :out std_logic; 
+		FPGA_INIT_B :out std_logic; 
+		DAC_CS      :out std_logic := '1'); 
 end adcdac;
 
 architecture Behavioral of adcdac is
@@ -46,30 +46,30 @@ architecture Behavioral of adcdac is
 	signal state: state_type := IDLE;
 	signal risingedge :std_logic := '1';
 	signal clk_counter :integer range 0 to 25 := 0;
-	signal ADC1 : signed (13 downto 0):= (others => '0');  -- Data from ADC1 (VIN A)
-   signal ADC2 : signed (13 downto 0):= (others => '0');  -- Data from ADC2 (VIN B)
+	signal ADC1 : signed (13 downto 0):= (others => '0');  
+   signal ADC2 : signed (13 downto 0):= (others => '0');  
 	signal dacdata: signed(32 downto 0) := (others => '0');
 	signal dacsend : signed(11 downto 0) := (others => '0');
  
-	signal count1 : integer range 0 to 13; --14bits fot 1 ADC channel and + 2 zeros
-	signal count2 : integer range 0 to 13; --14bits fot 2 ADC channel and + 2 zeros
-	signal gaincount : integer range 0 to 7; --8bits for preamplifier signal.
-	signal daccounter: integer range 0 to 32; --DAC counter for loop
-	signal adccounter: integer range 0 to 34; --34 spi_sck cycles for an entire ADC-loop.
+	signal count1 : integer range 0 to 13; 
+	signal count2 : integer range 0 to 13; 
+	signal gaincount : integer range 0 to 7;
+	signal daccounter: integer range 0 to 32; 
+	signal adccounter: integer range 0 to 34;
 	
 	constant number_int: integer := 2;
 	signal number_sig: signed (11 downto 0) := ( others=> '0');
 	
 	constant MAXDIG  : real := real(2 ** 14);
-	constant VREF    : real := 1.65;--2.43;  -- or whatever you have as a reference
-	constant analog    : real := 0.5;   -- analog voltage into converter
+	constant VREF    : real := 1.65;
+	constant analog    : real := 0.5;  
 	signal adcval    : signed(13 downto 0);
 
 begin
 
 adcval <= to_signed(integer(MAXDIG * analog / VREF), 14); 
 
---This is a clock devider in order to get a 2MHz clock.
+
 process(clk_50)
 begin
 	if rising_edge(clk_50) then
@@ -84,14 +84,14 @@ end process;
 
 SPI_SCK <= risingedge;
 
---This is in order to deactivate other functions that the SPI has.
+
 SPI_SS_B <= '0';
 SF_CE0 <= '1';
 FPGA_INIT_B <= '1';
 
 process(SPI_SCK)
 
-	constant gain : std_logic_vector(7 downto 0) := "00010001"; --This is the gain of the A and B preamplifiers corresponding to A and B ADCs. (0, 0)
+	constant gain : std_logic_vector(7 downto 0) := "00010001";
 	
 begin
 		if rising_edge(SPI_SCK) then
@@ -121,7 +121,7 @@ begin
 								state <= SETAMP;
 							end if;
 							
-						when START_AD => --analog-to-digital conversion starts.
+						when START_AD => 
 								SPI_MOSI <= '0';
 								AMP_SHDN <= '1';
 								AMP_CS <= '1';
